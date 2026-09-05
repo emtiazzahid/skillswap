@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:opsz,wght,SOFT@9..144,400..700,0..100&family=Public+Sans:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="../tokens.css" />
+		<style>
+			html,
+			body {
+				margin: 0;
+				background: transparent;
+				font-family: var(--font-body);
+			}
+			body {
+				display: grid;
+			}
+			.piece {
+				display: none;
+				place-items: center;
+			}
+			body[data-piece='wordmark'] .p-wordmark,
+			body[data-piece='wordmark-reverse'] .p-wordmark,
+			body[data-piece='lockup'] .p-lockup,
+			body[data-piece='lockup-reverse'] .p-lockup,
+			body[data-piece='mark'] .p-mark,
+			body[data-piece='banner'] .p-banner,
+			body[data-piece='avatar'] .p-avatar {
+				display: grid;
+			}
+			body[data-bg='cork'] {
+				background: var(--cork);
+			}
+			body[data-bg='paper'] {
+				background: var(--paper);
+			}
+
+			/* Wordmark */
+			.wordmark {
+				font-family: var(--font-display);
+				font-weight: 700;
+				font-size: 160px;
+				letter-spacing: -0.02em;
+				line-height: 1;
+				color: var(--ink);
+				display: inline-flex;
+				align-items: baseline;
+				gap: 0.22em;
+				white-space: nowrap;
+				padding: 0 6px;
+			}
+			.wordmark .swap {
+				color: var(--red-ink);
+				font-style: italic;
+				font-weight: 600;
+			}
+			body[data-reverse='1'] .wordmark {
+				color: var(--paper);
+			}
+			body[data-reverse='1'] .wordmark .swap {
+				color: var(--sticky);
+			}
+
+			/* Mark: pinned paper square */
+			.mark {
+				position: relative;
+				width: 512px;
+				height: 512px;
+			}
+			.mark .sheet {
+				position: absolute;
+				left: 78px;
+				top: 126px;
+				width: 356px;
+				height: 306px;
+				background: var(--paper);
+				border-radius: 10px;
+				transform: rotate(-4deg);
+				box-shadow:
+					0 10px 0 rgba(0, 0, 0, 0.12),
+					0 26px 34px -22px rgba(0, 0, 0, 0.55);
+			}
+			.mark .line {
+				position: absolute;
+				background: var(--ink);
+				border-radius: 5px;
+				transform: rotate(-4deg);
+			}
+			.mark .l1 {
+				left: 138px;
+				top: 236px;
+				width: 232px;
+				height: 26px;
+				opacity: 0.85;
+			}
+			.mark .l2 {
+				left: 148px;
+				top: 300px;
+				width: 150px;
+				height: 26px;
+				opacity: 0.5;
+			}
+			.mark .l3 {
+				left: 148px;
+				top: 356px;
+				width: 96px;
+				height: 22px;
+				background: var(--red-ink);
+				opacity: 0.9;
+			}
+			.mark .pinhead {
+				position: absolute;
+				left: 208px;
+				top: 84px;
+				width: 96px;
+				height: 96px;
+				border-radius: 50%;
+				background: var(--red-pen);
+				box-shadow:
+					inset -14px -14px 0 rgba(0, 0, 0, 0.22),
+					0 12px 12px -6px rgba(0, 0, 0, 0.45);
+			}
+			.mark .pinhead::after {
+				content: '';
+				position: absolute;
+				left: 34px;
+				top: 18px;
+				width: 22px;
+				height: 22px;
+				border-radius: 50%;
+				background: rgba(255, 255, 255, 0.55);
+			}
+			.mark--plate {
+				background: var(--cork);
+				border-radius: 96px;
+			}
+
+			/* Lockup: mark + wordmark side by side */
+			.lockup {
+				display: flex;
+				align-items: center;
+				gap: 44px;
+				padding: 0 10px;
+			}
+			.lockup .mark-slot {
+				display: flex;
+			}
+			.lockup .mark-slot .mark {
+				zoom: 0.44;
+			}
+			.lockup .wordmark {
+				font-size: 132px;
+			}
+			.lockup .stack {
+				display: grid;
+				gap: 6px;
+			}
+			.lockup .tag {
+				font-family: var(--font-hand);
+				font-size: 46px;
+				color: var(--pencil);
+				line-height: 1;
+				padding-left: 6px;
+			}
+			body[data-reverse='1'] .lockup .tag {
+				color: var(--sticky);
+			}
+
+			/* Banner: taped paper strip on cork, for social headers */
+			.banner {
+				width: 1500px;
+				height: 500px;
+				background: var(--cork);
+				display: grid;
+				place-items: center;
+				position: relative;
+			}
+			.banner .strip {
+				position: relative;
+				background: var(--paper);
+				padding: 54px 96px;
+				box-shadow:
+					0 2px 0 rgba(0, 0, 0, 0.1),
+					0 26px 40px -26px rgba(0, 0, 0, 0.6);
+				transform: rotate(-1.2deg);
+				text-align: center;
+			}
+			.banner .strip .wordmark {
+				font-size: 150px;
+			}
+			.banner .strip .tag {
+				font-family: var(--font-hand);
+				font-size: 52px;
+				color: var(--pencil);
+				margin-top: 10px;
+			}
+			.banner .tape {
+				position: absolute;
+				width: 190px;
+				height: 62px;
+				background: var(--tape);
+				top: -26px;
+			}
+			.banner .tape--l {
+				left: -46px;
+				transform: rotate(-38deg);
+			}
+			.banner .tape--r {
+				right: -46px;
+				transform: rotate(38deg);
+			}
+
+			/* Avatar: square mark on cork plate, for profile pictures */
+			.avatar-tile {
+				width: 1000px;
+				height: 1000px;
+				background: var(--cork);
+				display: grid;
+				place-items: center;
+			}
+			.avatar-tile .mark {
+				transform: scale(1.55);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="piece p-wordmark">
+			<span class="wordmark">Skill<span class="swap">Swap</span></span>
+		</div>
+
+		<div class="piece p-lockup">
+			<div class="lockup">
+				<div class="mark-slot">
+					<div class="mark">
+						<div class="sheet"></div>
+						<div class="line l1"></div>
+						<div class="line l2"></div>
+						<div class="line l3"></div>
+						<div class="pinhead"></div>
+					</div>
+				</div>
+				<div class="stack">
+					<span class="wordmark">Skill<span class="swap">Swap</span></span
+					><span class="tag">neighbours trade skills, no money</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="piece p-mark">
+			<div class="mark">
+				<div class="sheet"></div>
+				<div class="line l1"></div>
+				<div class="line l2"></div>
+				<div class="line l3"></div>
+				<div class="pinhead"></div>
+			</div>
+		</div>
+
+		<div class="piece p-banner">
+			<div class="banner">
+				<div class="strip">
+					<span class="tape tape--l"></span><span class="tape tape--r"></span
+					><span class="wordmark">Skill<span class="swap">Swap</span></span>
+					<div class="tag">neighbours trade skills, no money</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="piece p-avatar">
+			<div class="avatar-tile">
+				<div class="mark">
+					<div class="sheet"></div>
+					<div class="line l1"></div>
+					<div class="line l2"></div>
+					<div class="line l3"></div>
+					<div class="pinhead"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

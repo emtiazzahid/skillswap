@@ -106,6 +106,8 @@
 		<span>SkillSwap is a non-commercial hobby project.</span>
 		<a href="https://github.com/emtiazzahid/skillswap">Source on GitHub</a>
 		<a href="/about">Rules &amp; safety</a>
+		<a href="/privacy">Privacy</a>
+		<a href="/terms">Terms</a>
 	</footer>
 </main>
 

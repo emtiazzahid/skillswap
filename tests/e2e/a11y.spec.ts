@@ -32,6 +32,8 @@ test.describe('accessibility sweep', () => {
 		for (const [path, label] of [
 			['/', 'landing'],
 			['/about', 'about'],
+			['/privacy', 'privacy'],
+			['/terms', 'terms'],
 			['/auth/login', 'login'],
 			['/me', 'settings'],
 			['/inbox', 'inbox'],

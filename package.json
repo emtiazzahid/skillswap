@@ -24,7 +24,8 @@
 		"mockups:render": "node scripts/render-mockups.ts",
 		"assets:render": "node scripts/render-assets.ts",
 		"seed:local": "tsx scripts/seed.ts",
-		"social:kit": "tsx scripts/social-kit.ts"
+		"social:kit": "tsx scripts/social-kit.ts",
+		"logo:kit": "tsx scripts/logo-kit.ts"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.13.0",
