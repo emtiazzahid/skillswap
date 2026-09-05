@@ -6,6 +6,10 @@
 	import '$lib/styles/app.css';
 	import TopBar from '$lib/components/TopBar.svelte';
 	let { children, data } = $props();
+	// Marker for tests: input typed before hydration would be reset by hydration.
+	$effect(() => {
+		document.documentElement.dataset.hydrated = 'true';
+	});
 </script>
 
 <TopBar user={data.user} />

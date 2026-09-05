@@ -1,5 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
+// Throwaway 32-byte key for local/CI runs only.
+const E2E_CONTACT_KEY = 'AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8=';
+
 export default defineConfig({
 	testDir: 'tests/e2e',
 	fullyParallel: false,
@@ -8,7 +11,8 @@ export default defineConfig({
 	use: { baseURL: 'http://127.0.0.1:8788', trace: 'on-first-retry' },
 	webServer: {
 		command:
-			'pnpm build && pnpm db:migrate:local && pnpm exec wrangler dev --port 8788 --ip 127.0.0.1',
+			'pnpm build && pnpm db:migrate:local && pnpm exec wrangler dev --port 8788 --ip 127.0.0.1 --var E2E_MOCK_OAUTH:1 --var PUBLIC_ORIGIN:http://127.0.0.1:8788 --var CONTACT_KEY:' +
+			E2E_CONTACT_KEY,
 		url: 'http://127.0.0.1:8788/api/health',
 		reuseExistingServer: !process.env.CI,
 		timeout: 180_000
@@ -18,7 +22,7 @@ export default defineConfig({
 		{
 			name: 'mobile',
 			use: { ...devices['Pixel 7'] },
-			testMatch: /(landing|board|mockups)\.spec\.ts/
+			testMatch: /(landing|board|mockups|auth)\.spec\.ts/
 		}
 	]
 });

@@ -1,0 +1,9 @@
+# Copy to .dev.vars for local `pnpm dev` / `wrangler dev`. Never commit .dev.vars.
+E2E_MOCK_OAUTH=1
+CONTACT_KEY=AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8=
+PUBLIC_ORIGIN=http://127.0.0.1:8788
+# GITHUB_CLIENT_ID=
+# GITHUB_CLIENT_SECRET=
+# GOOGLE_CLIENT_ID=
+# GOOGLE_CLIENT_SECRET=
+# SITE_ADMIN_IDS=

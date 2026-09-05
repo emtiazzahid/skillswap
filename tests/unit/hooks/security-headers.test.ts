@@ -4,7 +4,10 @@ import { handle } from '../../../src/hooks.server';
 function fakeEvent() {
 	return {
 		locals: {} as App.Locals,
-		request: new Request('http://localhost/')
+		request: new Request('http://localhost/'),
+		url: new URL('http://localhost/'),
+		cookies: { get: () => undefined, set: () => {} },
+		platform: undefined
 	} as unknown as Parameters<typeof handle>[0]['event'];
 }
 
