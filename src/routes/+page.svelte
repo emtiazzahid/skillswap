@@ -1,5 +1,8 @@
 <script lang="ts">
 	import SampleCards from '$lib/components/SampleCards.svelte';
+	import CommunityCard from '$lib/components/CommunityCard.svelte';
+	let { data } = $props();
+	const rots = ['-1deg', '1.2deg', '-0.4deg', '0.8deg', '-1.4deg', '0.5deg'];
 </script>
 
 <svelte:head>
@@ -62,6 +65,36 @@
 				</p>
 			</div>
 		</div>
+	</section>
+
+	<section class="communities">
+		<div class="section-title">
+			<h2>{data.mine.length ? 'Your boards' : 'Boards near and far'}</h2>
+			<a class="btn btn--sm btn--paper" href="/communities/new" style="margin-left:auto"
+				>+ Start a board</a
+			>
+		</div>
+		{#if data.mine.length}
+			<div class="community-list">
+				{#each data.mine as c, i (c.id)}<CommunityCard
+						community={c}
+						rot={rots[i % rots.length]}
+					/>{/each}
+			</div>
+			{#if data.publicBoards.length}<h2 class="on-cork" style="margin-top:var(--s-6)">
+					Other public boards
+				</h2>{/if}
+		{/if}
+		{#if data.publicBoards.length}
+			<div class="community-list">
+				{#each data.publicBoards as c, i (c.id)}<CommunityCard
+						community={c}
+						rot={rots[(i + 3) % rots.length]}
+					/>{/each}
+			</div>
+		{:else if !data.mine.length}
+			<div class="empty"><span class="hand">Nothing pinned yet. Start the first board.</span></div>
+		{/if}
 	</section>
 
 	<footer class="footer">
@@ -147,6 +180,15 @@
 	.section-title h2 {
 		color: var(--paper);
 		text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+	}
+	.communities {
+		margin: var(--s-6) 0 var(--s-4);
+	}
+	.community-list {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--s-5);
+		margin-top: var(--s-4);
 	}
 	.footer {
 		color: #fff;
