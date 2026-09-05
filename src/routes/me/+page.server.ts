@@ -26,6 +26,7 @@ export const load: PageServerLoad = async (event) => {
 		with: { contact: true }
 	});
 	return {
+		userId: user.id,
 		displayName: row?.displayName ?? '',
 		bio: row?.bio ?? '',
 		publicName: publicName(row?.displayName ?? ''),

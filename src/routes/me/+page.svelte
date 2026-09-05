@@ -12,6 +12,7 @@
 				>neighbors see you as “{data.publicName}”</span
 			>
 		</div>
+		<a class="btn btn--paper btn--sm" href={`/u/${data.userId}`}>View public profile</a>
 		<form method="POST" action="/auth/logout">
 			<button class="btn btn--paper btn--sm" type="submit">Sign out</button>
 		</form>

@@ -9,7 +9,7 @@ export default defineConfig({
 				runes: ({ filename }) =>
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
-			adapter: adapter({ config: 'wrangler.jsonc' }),
+			adapter: adapter({ config: 'wrangler.adapter.jsonc' }),
 			csp: {
 				mode: 'auto',
 				directives: {
