@@ -3,89 +3,90 @@
    Every text/background pair below is contrast-tested in tests/unit/design/tokens.test.ts */
 
 :root {
-  /* Surfaces */
-  --cork: #b07a4c;
-  --cork-deep: #8f5f36;
-  --kraft: #d8b98c;
-  --paper: #fbf7ee;
-  --paper-2: #f4eddc;
-  --index: #f6efd9;
-  --lined: #f7f9fb;
-  --lined-rule: #c9d7ea;
-  --sticky: #fff3a3;
-  --sticky-2: #d6f0b8;
+	/* Surfaces */
+	--cork: #98643d;
+	--cork-deep: #7d5030;
+	--kraft: #d8b98c;
+	--paper: #fbf7ee;
+	--paper-2: #f4eddc;
+	--index: #f6efd9;
+	--lined: #f7f9fb;
+	--lined-rule: #c9d7ea;
+	--sticky: #fff3a3;
+	--sticky-2: #d6f0b8;
 
-  /* Ink */
-  --ink: #1f1a15;
-  --ink-soft: #3d342c;
-  --pencil: #5f564d;
-  --pencil-light: #8a8078;
-  --red-pen: #c7382f;
-  --blue-pen: #2f4e9e;
-  --green-pen: #2f7d4a;
+	/* Ink */
+	--ink: #1f1a15;
+	--ink-soft: #3d342c;
+	--pencil: #5f564d;
+	--pencil-light: #8a8078;
+	--red-pen: #c7382f;
+	--red-ink: #8a2620; /* deep brick red: AA on kraft, used for the logo */
+	--blue-pen: #2f4e9e;
+	--green-pen: #2f7d4a;
 
-  /* Accents */
-  --tape: rgba(255, 214, 102, 0.72);
-  --tape-edge: rgba(200, 160, 40, 0.35);
-  --sticker-green: #7fb069;
-  --sticker-yellow: #f2c94c;
-  --sticker-red: #e05a4e;
-  --pin-red: #d64545;
-  --pin-blue: #3b6fd6;
-  --pin-green: #4f9d5d;
-  --pin-yellow: #e6b422;
-  --string: #7a4b2a;
-  --highlighter: #ffe95c;
+	/* Accents */
+	--tape: rgba(255, 214, 102, 0.72);
+	--tape-edge: rgba(200, 160, 40, 0.35);
+	--sticker-green: #7fb069;
+	--sticker-yellow: #f2c94c;
+	--sticker-red: #e05a4e;
+	--pin-red: #d64545;
+	--pin-blue: #3b6fd6;
+	--pin-green: #4f9d5d;
+	--pin-yellow: #e6b422;
+	--string: #7a4b2a;
+	--highlighter: #ffe95c;
 
-  /* Type */
-  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
-  --font-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-hand: "Caveat", "Bradley Hand", cursive;
-  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+	/* Type */
+	--font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+	--font-body: 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+	--font-hand: 'Caveat', 'Bradley Hand', cursive;
+	--font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
 
-  --fs-1: 0.875rem;  /* 14 */
-  --fs-2: 1rem;      /* 16 */
-  --fs-3: 1.125rem;  /* 18 */
-  --fs-4: 1.375rem;  /* 22 */
-  --fs-5: 1.75rem;   /* 28 */
-  --fs-6: 2.25rem;   /* 36 */
-  --fs-7: 3rem;      /* 48 */
-  --lh-body: 1.45;
-  --lh-tight: 1.1;
+	--fs-1: 0.875rem; /* 14 */
+	--fs-2: 1rem; /* 16 */
+	--fs-3: 1.125rem; /* 18 */
+	--fs-4: 1.375rem; /* 22 */
+	--fs-5: 1.75rem; /* 28 */
+	--fs-6: 2.25rem; /* 36 */
+	--fs-7: 3rem; /* 48 */
+	--lh-body: 1.45;
+	--lh-tight: 1.1;
 
-  /* Space */
-  --s-1: 0.25rem;
-  --s-2: 0.5rem;
-  --s-3: 0.75rem;
-  --s-4: 1rem;
-  --s-5: 1.5rem;
-  --s-6: 2rem;
-  --s-7: 3rem;
-  --s-8: 4rem;
+	/* Space */
+	--s-1: 0.25rem;
+	--s-2: 0.5rem;
+	--s-3: 0.75rem;
+	--s-4: 1rem;
+	--s-5: 1.5rem;
+	--s-6: 2rem;
+	--s-7: 3rem;
+	--s-8: 4rem;
 
-  /* Shape */
-  --r-paper: 2px;
-  --r-sticker: 999px;
+	/* Shape */
+	--r-paper: 2px;
+	--r-sticker: 999px;
 
-  /* Elevation */
-  --lift-paper: 0 1px 0 rgba(0, 0, 0, 0.08), 0 6px 14px -8px rgba(0, 0, 0, 0.35);
-  --lift-paper-hover: 0 2px 0 rgba(0, 0, 0, 0.06), 0 14px 24px -12px rgba(0, 0, 0, 0.45);
-  --inset-paper: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+	/* Elevation */
+	--lift-paper: 0 1px 0 rgba(0, 0, 0, 0.08), 0 6px 14px -8px rgba(0, 0, 0, 0.35);
+	--lift-paper-hover: 0 2px 0 rgba(0, 0, 0, 0.06), 0 14px 24px -12px rgba(0, 0, 0, 0.45);
+	--inset-paper: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
 
-  /* Motion */
-  --t-fast: 120ms;
-  --t-med: 220ms;
-  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
-  --ease-wobble: cubic-bezier(0.34, 1.56, 0.64, 1);
+	/* Motion */
+	--t-fast: 120ms;
+	--t-med: 220ms;
+	--ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+	--ease-wobble: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-  /* Layout */
-  --measure: 62ch;
-  --container: 76rem;
+	/* Layout */
+	--measure: 62ch;
+	--container: 76rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :root {
-    --t-fast: 0ms;
-    --t-med: 0ms;
-  }
+	:root {
+		--t-fast: 0ms;
+		--t-med: 0ms;
+	}
 }

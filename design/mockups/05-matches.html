@@ -1,88 +1,231 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:opsz,wght,SOFT@9..144,400..700,0..100&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../board.css">
-<title>Your matches — SkillSwap</title>
-<style>
-  .page-head h1 { color: var(--paper); text-shadow: 0 1px 0 rgba(0,0,0,0.3); }
-  .page-head .hand { color: var(--highlighter); font-size: 1.5rem; }
-  .matches { display: grid; gap: var(--s-6); margin-top: var(--s-5); }
-  .match-row { position: relative; background: rgba(0,0,0,0.12); padding: var(--s-5); border-radius: 4px; }
-  .match-row .match .card { max-width: 340px; width: 100%; justify-self: center; }
-  .match-row .who { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); margin-bottom: var(--s-3); color: var(--paper); }
-  .match-row .who b { font-family: var(--font-display); font-size: var(--fs-4); }
-  .match-row .who .btn { margin-left: auto; }
-  .match-row .why { color: rgba(255,255,255,0.8); font-size: var(--fs-1); }
-  .mine { align-self: flex-start; margin-top: var(--s-2); background: var(--sticky); font-family: var(--font-hand); font-size: 1.15rem; line-height: 1.1; padding: 4px 10px; box-shadow: var(--lift-paper); color: var(--ink); transform: rotate(-1.5deg); }
-  .col-label { color: rgba(255,255,255,0.7); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; text-align: center; margin-bottom: var(--s-2); }
-  .gift { margin-top: var(--s-7); }
-  .gift h2 { color: var(--paper); text-shadow: 0 1px 0 rgba(0,0,0,0.3); }
-  .gift .board { grid-template-columns: repeat(auto-fill, minmax(236px, 1fr)); }
-  .gift .card .btn { align-self: flex-start; margin-top: var(--s-2); }
-  @media (max-width: 760px) { .match-row .who { flex-wrap: wrap; } }
-</style>
-</head>
-<body>
-<header class="topbar container">
-  <div class="topbar__strip">
-    <span class="pin pin--l pin--blue" aria-hidden="true"></span>
-    <a class="logo" href="#">Skill<span class="logo__swap">Swap</span></a>
-    <span class="hand pencil">Mirpur Neighbours</span>
-    <nav class="nav" aria-label="Main">
-      <a href="#">Boards</a>
-      <a href="#">Inbox <span class="chip" style="background:var(--red-pen);color:#fff">2</span></a>
-      <a href="#" class="row" style="gap:6px"><span class="avatar">E</span> Emtiaz</a>
-    </nav>
-    <span class="pin pin--r pin--green" aria-hidden="true"></span>
-  </div>
-</header>
-<main class="container page">
-  <div class="page-head">
-    <div class="grow"><h1>Your matches</h1><span class="hand">3 people want what you know, and know what you want</span></div>
-    <a class="btn btn--paper btn--sm" href="#">← Back to board</a>
-  </div>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:opsz,wght,SOFT@9..144,400..700,0..100&family=Public+Sans:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="../board.css" />
+		<title>Your matches — SkillSwap</title>
+		<style>
+			.page-head h1 {
+				color: var(--paper);
+				text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+			}
+			.page-head .hand {
+				color: var(--highlighter);
+				font-size: 1.5rem;
+			}
+			.matches {
+				display: grid;
+				gap: var(--s-6);
+				margin-top: var(--s-5);
+			}
+			.match-row {
+				position: relative;
+				background: rgba(0, 0, 0, 0.12);
+				padding: var(--s-5);
+				border-radius: 4px;
+			}
+			.match-row .match .card {
+				max-width: 340px;
+				width: 100%;
+				justify-self: center;
+			}
+			.match-row .who {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: var(--s-3);
+				margin-bottom: var(--s-3);
+				color: var(--paper);
+			}
+			.match-row .who b {
+				font-family: var(--font-display);
+				font-size: var(--fs-4);
+			}
+			.match-row .who .btn {
+				margin-left: auto;
+			}
+			.match-row .why {
+				color: rgba(255, 255, 255, 0.8);
+				font-size: var(--fs-1);
+			}
+			.mine {
+				align-self: flex-start;
+				margin-top: var(--s-2);
+				background: var(--sticky);
+				font-family: var(--font-hand);
+				font-size: 1.15rem;
+				line-height: 1.1;
+				padding: 4px 10px;
+				box-shadow: var(--lift-paper);
+				color: var(--ink);
+				transform: rotate(-1.5deg);
+			}
+			.col-label {
+				color: rgba(255, 255, 255, 0.7);
+				font-size: 12px;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				text-align: center;
+				margin-bottom: var(--s-2);
+			}
+			.gift {
+				margin-top: var(--s-7);
+			}
+			.gift h2 {
+				color: var(--paper);
+				text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+			}
+			.gift .board {
+				grid-template-columns: repeat(auto-fill, minmax(236px, 1fr));
+			}
+			.gift .card .btn {
+				align-self: flex-start;
+				margin-top: var(--s-2);
+			}
+			@media (max-width: 760px) {
+				.match-row .who {
+					flex-wrap: wrap;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<header class="topbar container">
+			<div class="topbar__strip">
+				<span class="pin pin--l pin--blue" aria-hidden="true"></span>
+				<a class="logo" href="#">Skill<span class="logo__swap">Swap</span></a>
+				<span class="hand pencil">Mirpur Neighbours</span>
+				<nav class="nav" aria-label="Main">
+					<a href="#">Boards</a>
+					<a href="#"
+						>Inbox <span class="chip" style="background: var(--red-pen); color: #fff">2</span></a
+					>
+					<a href="#" class="row" style="gap: 6px"><span class="avatar">E</span> Emtiaz</a>
+				</nav>
+				<span class="pin pin--r pin--green" aria-hidden="true"></span>
+			</div>
+		</header>
+		<main class="container page">
+			<div class="page-head">
+				<div class="grow">
+					<h1>Your matches</h1>
+					<span class="hand">3 people want what you know, and know what you want</span>
+				</div>
+				<a class="btn btn--paper btn--sm" href="#">← Back to board</a>
+			</div>
 
-  <div class="matches">
-    <section class="match-row">
-      <div class="who"><span class="avatar" style="width:36px;height:36px;font-size:14px">R</span><b>Rina S.</b><span class="why">Strong match · same category both ways · both online</span><a class="btn btn--sm" href="#">Request swap</a></div>
-      <div class="match">
-        <div><div class="col-label">You teach Rina</div>
-          <div class="card card--offer" style="--rot:-1.2deg; position:relative"><span class="pin pin--green" aria-hidden="true"></span><span class="stamp">Your offer · Tech</span><span class="card__title">Excel for people who hate Excel</span><span class="card__desc">Pivot tables in an hour. VLOOKUP in two.</span><span class="mine">she wants: “Excel that doesn't scare me”</span></div>
-        </div>
-        <div class="string" aria-hidden="true"></div>
-        <div><div class="col-label">Rina teaches you</div>
-          <div class="card card--offer" style="--rot:1.4deg; position:relative"><span class="pin" aria-hidden="true"></span><span class="stamp">Her offer · Music</span><span class="card__title">Guitar chords for total beginners</span><span class="card__desc">Four chords, twenty songs. Spare guitar available.</span><span class="mine">you want: “Learn guitar, finally”</span></div>
-        </div>
-      </div>
-    </section>
+			<div class="matches">
+				<section class="match-row">
+					<div class="who">
+						<span class="avatar" style="width: 36px; height: 36px; font-size: 14px">R</span
+						><b>Rina S.</b
+						><span class="why">Strong match · same category both ways · both online</span
+						><a class="btn btn--sm" href="#">Request swap</a>
+					</div>
+					<div class="match">
+						<div>
+							<div class="col-label">You teach Rina</div>
+							<div class="card card--offer" style="--rot: -1.2deg; position: relative">
+								<span class="pin pin--green" aria-hidden="true"></span
+								><span class="stamp">Your offer · Tech</span
+								><span class="card__title">Excel for people who hate Excel</span
+								><span class="card__desc">Pivot tables in an hour. VLOOKUP in two.</span
+								><span class="mine">she wants: “Excel that doesn't scare me”</span>
+							</div>
+						</div>
+						<div class="string" aria-hidden="true"></div>
+						<div>
+							<div class="col-label">Rina teaches you</div>
+							<div class="card card--offer" style="--rot: 1.4deg; position: relative">
+								<span class="pin" aria-hidden="true"></span
+								><span class="stamp">Her offer · Music</span
+								><span class="card__title">Guitar chords for total beginners</span
+								><span class="card__desc">Four chords, twenty songs. Spare guitar available.</span
+								><span class="mine">you want: “Learn guitar, finally”</span>
+							</div>
+						</div>
+					</div>
+				</section>
 
-    <section class="match-row">
-      <div class="who"><span class="avatar" style="width:36px;height:36px;font-size:14px">A</span><b>Arif M.</b><span class="why">Good match · Arif prefers in person, you said either</span><a class="btn btn--sm" href="#">Request swap</a></div>
-      <div class="match">
-        <div><div class="col-label">You teach Arif</div>
-          <div class="card card--offer" style="--rot:0.8deg; position:relative"><span class="pin pin--blue" aria-hidden="true"></span><span class="stamp">Your offer · Tech</span><span class="card__title">Laravel for WordPress devs</span><span class="card__desc">You know PHP already. Routes, Eloquent, Blade.</span><span class="mine">he wants: “Move my WP site to a real framework”</span></div>
-        </div>
-        <div class="string" aria-hidden="true"></div>
-        <div><div class="col-label">Arif teaches you</div>
-          <div class="card card--offer" style="--rot:-1.6deg; position:relative"><span class="pin pin--yellow" aria-hidden="true"></span><span class="stamp">His offer · Academic</span><span class="card__title">Chess beyond the opening</span><span class="card__desc">Middlegame plans and endgames that actually happen.</span><span class="mine">you want: “Stop losing at chess to my nephew”</span></div>
-        </div>
-      </div>
-    </section>
-  </div>
+				<section class="match-row">
+					<div class="who">
+						<span class="avatar" style="width: 36px; height: 36px; font-size: 14px">A</span
+						><b>Arif M.</b
+						><span class="why">Good match · Arif prefers in person, you said either</span
+						><a class="btn btn--sm" href="#">Request swap</a>
+					</div>
+					<div class="match">
+						<div>
+							<div class="col-label">You teach Arif</div>
+							<div class="card card--offer" style="--rot: 0.8deg; position: relative">
+								<span class="pin pin--blue" aria-hidden="true"></span
+								><span class="stamp">Your offer · Tech</span
+								><span class="card__title">Laravel for WordPress devs</span
+								><span class="card__desc">You know PHP already. Routes, Eloquent, Blade.</span
+								><span class="mine">he wants: “Move my WP site to a real framework”</span>
+							</div>
+						</div>
+						<div class="string" aria-hidden="true"></div>
+						<div>
+							<div class="col-label">Arif teaches you</div>
+							<div class="card card--offer" style="--rot: -1.6deg; position: relative">
+								<span class="pin pin--yellow" aria-hidden="true"></span
+								><span class="stamp">His offer · Academic</span
+								><span class="card__title">Chess beyond the opening</span
+								><span class="card__desc">Middlegame plans and endgames that actually happen.</span
+								><span class="mine">you want: “Stop losing at chess to my nephew”</span>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
 
-  <section class="gift">
-    <div class="page-head"><div class="grow"><h2>You could just gift these</h2><p class="on-cork muted">5 people want what you offer. Nothing reciprocal, but who's counting.</p></div></div>
-    <div class="board">
-      <div class="card card--want" style="--rot:1deg"><span class="tape tape--top" aria-hidden="true"></span><span class="stamp stamp--blue">Want · Tech</span><span class="card__title">Spreadsheets for my shop accounts</span><span class="card__meta"><span class="card__who"><span class="avatar">N</span>Nusrat J.</span><span>In person</span></span><a class="btn btn--sm btn--ghost" href="#">Offer to help</a></div>
-      <div class="card card--want" style="--rot:-1.5deg"><span class="tape tape--tl" aria-hidden="true"></span><span class="stamp stamp--blue">Want · Tech</span><span class="card__title">Excel formulas, I'm begging</span><span class="card__meta"><span class="card__who"><span class="avatar">F</span>Farhan I.</span><span>Online</span></span><a class="btn btn--sm btn--ghost" href="#">Offer to help</a></div>
-      <div class="card card--want" style="--rot:0.6deg"><span class="tape tape--tr" aria-hidden="true"></span><span class="stamp stamp--blue">Want · Tech</span><span class="card__title">Laravel, from zero</span><span class="card__meta"><span class="card__who"><span class="avatar">S</span>Sadia R.</span><span>Either</span></span><a class="btn btn--sm btn--ghost" href="#">Offer to help</a></div>
-    </div>
-  </section>
-</main>
-</body>
+			<section class="gift">
+				<div class="page-head">
+					<div class="grow">
+						<h2>You could just gift these</h2>
+						<p class="on-cork muted">
+							5 people want what you offer. Nothing reciprocal, but who's counting.
+						</p>
+					</div>
+				</div>
+				<div class="board">
+					<div class="card card--want" style="--rot: 1deg">
+						<span class="tape tape--top" aria-hidden="true"></span
+						><span class="stamp stamp--blue">Want · Tech</span
+						><span class="card__title">Spreadsheets for my shop accounts</span
+						><span class="card__meta"
+							><span class="card__who"><span class="avatar">N</span>Nusrat J.</span
+							><span>In person</span></span
+						><a class="btn btn--sm btn--ghost" href="#">Offer to help</a>
+					</div>
+					<div class="card card--want" style="--rot: -1.5deg">
+						<span class="tape tape--tl" aria-hidden="true"></span
+						><span class="stamp stamp--blue">Want · Tech</span
+						><span class="card__title">Excel formulas, I'm begging</span
+						><span class="card__meta"
+							><span class="card__who"><span class="avatar">F</span>Farhan I.</span
+							><span>Online</span></span
+						><a class="btn btn--sm btn--ghost" href="#">Offer to help</a>
+					</div>
+					<div class="card card--want" style="--rot: 0.6deg">
+						<span class="tape tape--tr" aria-hidden="true"></span
+						><span class="stamp stamp--blue">Want · Tech</span
+						><span class="card__title">Laravel, from zero</span
+						><span class="card__meta"
+							><span class="card__who"><span class="avatar">S</span>Sadia R.</span
+							><span>Either</span></span
+						><a class="btn btn--sm btn--ghost" href="#">Offer to help</a>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
 </html>

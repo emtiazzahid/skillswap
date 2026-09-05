@@ -1,0 +1,27 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "skillswap",
+	"main": ".svelte-kit/cloudflare/_worker.js",
+	"account_id": "3e14168ba06f32b93506288023c8e8d6",
+	"compatibility_date": "2026-08-22",
+	"compatibility_flags": ["nodejs_compat"],
+	"workers_dev": true,
+	"assets": {
+		"binding": "ASSETS",
+		"directory": ".svelte-kit/cloudflare"
+	},
+	"observability": { "enabled": true },
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "skillswap-db",
+			"database_id": "11abf356-f33e-43da-86db-17bb65647bb4",
+			"migrations_dir": "migrations"
+		}
+	],
+	"kv_namespaces": [{ "binding": "SESSIONS", "id": "4f9947ec46c1465a85ddd52c2dc8e21a" }],
+	"vars": {
+		"APP_NAME": "SkillSwap",
+		"PUBLIC_ORIGIN": "https://skillswap.emtiazzahid.workers.dev"
+	}
+}

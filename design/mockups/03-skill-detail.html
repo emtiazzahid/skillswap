@@ -1,107 +1,264 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:opsz,wght,SOFT@9..144,400..700,0..100&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../board.css">
-<title>Guitar chords for total beginners — SkillSwap</title>
-<style>
-  .detail { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: var(--s-7); align-items: start; margin-top: var(--s-4); }
-  .big-card { --rot: -0.8deg; padding: var(--s-6) var(--s-6) var(--s-5); }
-  .big-card .card__title { font-size: var(--fs-6); }
-  .big-card .card__desc { font-size: var(--fs-2); color: var(--ink-soft); margin-top: var(--s-3); }
-  .facts { display: grid; grid-template-columns: repeat(3, auto); gap: var(--s-4); margin-top: var(--s-4); font-size: var(--fs-1); }
-  .facts dt { color: var(--pencil); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
-  .facts dd { margin: 0; font-weight: 600; }
-  .owner { display: flex; gap: var(--s-3); align-items: center; margin-top: var(--s-5); padding-top: var(--s-4); border-top: 1.5px dashed var(--pencil-light); }
-  .owner .avatar { width: 40px; height: 40px; font-size: 15px; }
-  .owner-actions { margin-top: var(--s-3); display: flex; gap: var(--s-2); flex-wrap: wrap; }
-  .others { margin-top: var(--s-6); }
-  .others h2 { color: var(--paper); font-size: var(--fs-4); margin-bottom: var(--s-3); text-shadow: 0 1px 0 rgba(0,0,0,0.3); }
-  .others .board { grid-template-columns: 1fr 1fr; padding: var(--s-3) 0; }
-  .request .index-card { --rot: 0.6deg; transform: rotate(var(--rot)); }
-  .request h2 { font-size: var(--fs-4); margin-bottom: var(--s-2); }
-  .offer-pick { display: grid; gap: var(--s-2); }
-  .offer-pick label { display: flex; gap: var(--s-2); align-items: flex-start; background: rgba(255,255,255,0.5); padding: var(--s-2) var(--s-3); border-radius: 2px; border: 1.5px solid transparent; }
-  .offer-pick label:has(:checked) { border-color: var(--ink); background: var(--paper); }
-  .offer-pick input { accent-color: var(--ink); margin-top: 3px; }
-  .offer-pick small { color: var(--pencil); display: block; }
-  .flag { font-size: 13px; color: rgba(255,255,255,0.8); margin-top: var(--s-3); display: block; }
-  .flag a { color: #fff; }
-  @media (max-width: 760px) { .detail { grid-template-columns: 1fr; } .big-card .card__title { font-size: var(--fs-5); } }
-</style>
-</head>
-<body>
-<header class="topbar container">
-  <div class="topbar__strip">
-    <span class="pin pin--l pin--blue" aria-hidden="true"></span>
-    <a class="logo" href="#">Skill<span class="logo__swap">Swap</span></a>
-    <span class="hand pencil">Mirpur Neighbours</span>
-    <nav class="nav" aria-label="Main">
-      <a href="#">Boards</a>
-      <a href="#">Inbox <span class="chip" style="background:var(--red-pen);color:#fff">2</span></a>
-      <a href="#" class="row" style="gap:6px"><span class="avatar">E</span> Emtiaz</a>
-    </nav>
-    <span class="pin pin--r pin--green" aria-hidden="true"></span>
-  </div>
-</header>
-<main class="container page">
-  <p class="on-cork muted" style="margin-top:var(--s-5)"><a href="#" style="color:#fff">Mirpur Neighbours</a> › Board › Notice</p>
-  <div class="detail">
-    <div>
-      <article class="card card--offer big-card">
-        <span class="pin" aria-hidden="true"></span>
-        <div class="row" style="justify-content:space-between"><span class="stamp">Offer · Music</span><span class="hand" style="font-size:1.2rem">pinned 3 days ago</span></div>
-        <h1 class="card__title">Guitar chords for total beginners</h1>
-        <p class="card__desc">Four chords, twenty songs. I'll bring a spare guitar if you don't have one. We start with G, C, D and Em, and by the end of the second session you'll play something your family recognises. No theory unless you ask for it. I learned from YouTube and a patient uncle, so I know exactly where beginners get stuck.</p>
-        <dl class="facts">
-          <div><dt>Teaches up to</dt><dd>Beginner</dd></div>
-          <div><dt>Format</dt><dd>Online or in person</dd></div>
-          <div><dt>Availability</dt><dd>Weekday evenings, Sat afternoon</dd></div>
-        </dl>
-        <div class="owner">
-          <span class="avatar">R</span>
-          <div><b>Rina S.</b><br><span class="muted">Member since June · 4 swaps completed · <a href="#">Profile</a></span></div>
-        </div>
-      </article>
-      <span class="flag">Something wrong with this notice? <a href="#">Flag it</a></span>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:opsz,wght,SOFT@9..144,400..700,0..100&family=Public+Sans:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="../board.css" />
+		<title>Guitar chords for total beginners — SkillSwap</title>
+		<style>
+			.detail {
+				display: grid;
+				grid-template-columns: 1.1fr 0.9fr;
+				gap: var(--s-7);
+				align-items: start;
+				margin-top: var(--s-4);
+			}
+			.big-card {
+				--rot: -0.8deg;
+				padding: var(--s-6) var(--s-6) var(--s-5);
+			}
+			.big-card .card__title {
+				font-size: var(--fs-6);
+			}
+			.big-card .card__desc {
+				font-size: var(--fs-2);
+				color: var(--ink-soft);
+				margin-top: var(--s-3);
+			}
+			.facts {
+				display: grid;
+				grid-template-columns: repeat(3, auto);
+				gap: var(--s-4);
+				margin-top: var(--s-4);
+				font-size: var(--fs-1);
+			}
+			.facts dt {
+				color: var(--pencil);
+				font-size: 12px;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+			}
+			.facts dd {
+				margin: 0;
+				font-weight: 600;
+			}
+			.owner {
+				display: flex;
+				gap: var(--s-3);
+				align-items: center;
+				margin-top: var(--s-5);
+				padding-top: var(--s-4);
+				border-top: 1.5px dashed var(--pencil-light);
+			}
+			.owner .avatar {
+				width: 40px;
+				height: 40px;
+				font-size: 15px;
+			}
+			.owner-actions {
+				margin-top: var(--s-3);
+				display: flex;
+				gap: var(--s-2);
+				flex-wrap: wrap;
+			}
+			.others {
+				margin-top: var(--s-6);
+			}
+			.others h2 {
+				color: var(--paper);
+				font-size: var(--fs-4);
+				margin-bottom: var(--s-3);
+				text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+			}
+			.others .board {
+				grid-template-columns: 1fr 1fr;
+				padding: var(--s-3) 0;
+			}
+			.request .index-card {
+				--rot: 0.6deg;
+				transform: rotate(var(--rot));
+			}
+			.request h2 {
+				font-size: var(--fs-4);
+				margin-bottom: var(--s-2);
+			}
+			.offer-pick {
+				display: grid;
+				gap: var(--s-2);
+			}
+			.offer-pick label {
+				display: flex;
+				gap: var(--s-2);
+				align-items: flex-start;
+				background: rgba(255, 255, 255, 0.5);
+				padding: var(--s-2) var(--s-3);
+				border-radius: 2px;
+				border: 1.5px solid transparent;
+			}
+			.offer-pick label:has(:checked) {
+				border-color: var(--ink);
+				background: var(--paper);
+			}
+			.offer-pick input {
+				accent-color: var(--ink);
+				margin-top: 3px;
+			}
+			.offer-pick small {
+				color: var(--pencil);
+				display: block;
+			}
+			.flag {
+				font-size: 13px;
+				color: rgba(255, 255, 255, 0.8);
+				margin-top: var(--s-3);
+				display: block;
+			}
+			.flag a {
+				color: #fff;
+			}
+			@media (max-width: 760px) {
+				.detail {
+					grid-template-columns: 1fr;
+				}
+				.big-card .card__title {
+					font-size: var(--fs-5);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<header class="topbar container">
+			<div class="topbar__strip">
+				<span class="pin pin--l pin--blue" aria-hidden="true"></span>
+				<a class="logo" href="#">Skill<span class="logo__swap">Swap</span></a>
+				<span class="hand pencil">Mirpur Neighbours</span>
+				<nav class="nav" aria-label="Main">
+					<a href="#">Boards</a>
+					<a href="#"
+						>Inbox <span class="chip" style="background: var(--red-pen); color: #fff">2</span></a
+					>
+					<a href="#" class="row" style="gap: 6px"><span class="avatar">E</span> Emtiaz</a>
+				</nav>
+				<span class="pin pin--r pin--green" aria-hidden="true"></span>
+			</div>
+		</header>
+		<main class="container page">
+			<p class="on-cork muted" style="margin-top: var(--s-5)">
+				<a href="#" style="color: #fff">Mirpur Neighbours</a> › Board › Notice
+			</p>
+			<div class="detail">
+				<div>
+					<article class="card card--offer big-card">
+						<span class="pin" aria-hidden="true"></span>
+						<div class="row" style="justify-content: space-between">
+							<span class="stamp">Offer · Music</span
+							><span class="hand" style="font-size: 1.2rem">pinned 3 days ago</span>
+						</div>
+						<h1 class="card__title">Guitar chords for total beginners</h1>
+						<p class="card__desc">
+							Four chords, twenty songs. I'll bring a spare guitar if you don't have one. We start
+							with G, C, D and Em, and by the end of the second session you'll play something your
+							family recognises. No theory unless you ask for it. I learned from YouTube and a
+							patient uncle, so I know exactly where beginners get stuck.
+						</p>
+						<dl class="facts">
+							<div>
+								<dt>Teaches up to</dt>
+								<dd>Beginner</dd>
+							</div>
+							<div>
+								<dt>Format</dt>
+								<dd>Online or in person</dd>
+							</div>
+							<div>
+								<dt>Availability</dt>
+								<dd>Weekday evenings, Sat afternoon</dd>
+							</div>
+						</dl>
+						<div class="owner">
+							<span class="avatar">R</span>
+							<div>
+								<b>Rina S.</b><br /><span class="muted"
+									>Member since June · 4 swaps completed · <a href="#">Profile</a></span
+								>
+							</div>
+						</div>
+					</article>
+					<span class="flag">Something wrong with this notice? <a href="#">Flag it</a></span>
 
-      <section class="others">
-        <h2>Rina also pinned</h2>
-        <div class="board">
-          <a class="card card--want" style="--rot:1.5deg" href="#"><span class="tape tape--top" aria-hidden="true"></span><span class="stamp stamp--blue">Want · Tech</span><span class="card__title">Excel that doesn't scare me</span><span class="card__meta"><span>Evenings</span></span></a>
-          <a class="card card--want" style="--rot:-1deg" href="#"><span class="tape tape--tl" aria-hidden="true"></span><span class="stamp stamp--blue">Want · Cooking</span><span class="card__title">Proper biryani, not the rice-and-regret kind</span><span class="card__meta"><span>Weekends</span></span></a>
-        </div>
-      </section>
-    </div>
+					<section class="others">
+						<h2>Rina also pinned</h2>
+						<div class="board">
+							<a class="card card--want" style="--rot: 1.5deg" href="#"
+								><span class="tape tape--top" aria-hidden="true"></span
+								><span class="stamp stamp--blue">Want · Tech</span
+								><span class="card__title">Excel that doesn't scare me</span
+								><span class="card__meta"><span>Evenings</span></span></a
+							>
+							<a class="card card--want" style="--rot: -1deg" href="#"
+								><span class="tape tape--tl" aria-hidden="true"></span
+								><span class="stamp stamp--blue">Want · Cooking</span
+								><span class="card__title">Proper biryani, not the rice-and-regret kind</span
+								><span class="card__meta"><span>Weekends</span></span></a
+							>
+						</div>
+					</section>
+				</div>
 
-    <aside class="request">
-      <form class="index-card">
-        <h2>Ask Rina for a swap</h2>
-        <p class="muted" style="margin-bottom:var(--s-4)">Rina wants <b>Excel</b> and <b>biryani</b>. Pick something you can give back, or offer nothing and just ask nicely.</p>
-        <div class="field">
-          <span class="label">What I'll teach in return</span>
-          <div class="offer-pick">
-            <label><input type="radio" name="give" checked><span><b>Excel for people who hate Excel</b><small>Matches Rina's want · Online</small></span></label>
-            <label><input type="radio" name="give"><span><b>Laravel for WordPress devs</b><small>Pending approval</small></span></label>
-            <label><input type="radio" name="give"><span><b>Nothing, just asking</b><small>That's allowed. Rina can still say yes.</small></span></label>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label" for="note">A short note</label>
-          <textarea class="textarea" id="note" placeholder="Hi Rina, I have a guitar gathering dust…">Hi Rina! I've had a guitar for two years and can play exactly zero songs. Happy to do Excel first if that helps.</textarea>
-          <span class="hint">300 characters max. Be specific about when you're free.</span>
-        </div>
-        <div class="row" style="justify-content:space-between">
-          <button class="btn" type="submit">Send request</button>
-          <span class="hand pencil" style="font-size:1.1rem">contact details unlock after Rina accepts</span>
-        </div>
-      </form>
-    </aside>
-  </div>
-</main>
-</body>
+				<aside class="request">
+					<form class="index-card">
+						<h2>Ask Rina for a swap</h2>
+						<p class="muted" style="margin-bottom: var(--s-4)">
+							Rina wants <b>Excel</b> and <b>biryani</b>. Pick something you can give back, or offer
+							nothing and just ask nicely.
+						</p>
+						<div class="field">
+							<span class="label">What I'll teach in return</span>
+							<div class="offer-pick">
+								<label
+									><input type="radio" name="give" checked /><span
+										><b>Excel for people who hate Excel</b
+										><small>Matches Rina's want · Online</small></span
+									></label
+								>
+								<label
+									><input type="radio" name="give" /><span
+										><b>Laravel for WordPress devs</b><small>Pending approval</small></span
+									></label
+								>
+								<label
+									><input type="radio" name="give" /><span
+										><b>Nothing, just asking</b
+										><small>That's allowed. Rina can still say yes.</small></span
+									></label
+								>
+							</div>
+						</div>
+						<div class="field">
+							<label class="label" for="note">A short note</label>
+							<textarea
+								class="textarea"
+								id="note"
+								placeholder="Hi Rina, I have a guitar gathering dust…"
+							>
+Hi Rina! I've had a guitar for two years and can play exactly zero songs. Happy to do Excel first if that helps.</textarea>
+							<span class="hint">300 characters max. Be specific about when you're free.</span>
+						</div>
+						<div class="row" style="justify-content: space-between">
+							<button class="btn" type="submit">Send request</button>
+							<span class="hand pencil" style="font-size: 1.1rem"
+								>contact details unlock after Rina accepts</span
+							>
+						</div>
+					</form>
+				</aside>
+			</div>
+		</main>
+	</body>
 </html>
