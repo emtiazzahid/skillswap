@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:opsz,wght,SOFT@9..144,400..700,0..100&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../board.css">
+<title>Rina S. — SkillSwap</title>
+<style>
+  .profile { display: grid; grid-template-columns: 340px 1fr; gap: var(--s-7); align-items: start; margin-top: var(--s-5); }
+  .nametag { position: relative; background: var(--paper); padding: var(--s-6) var(--s-5) var(--s-5); box-shadow: var(--lift-paper); transform: rotate(-1deg); border-top: 14px solid var(--red-pen); }
+  .nametag::before { content: "HELLO, MY NAME IS"; position: absolute; top: -13px; left: 0; right: 0; text-align: center; font: 700 9px/12px var(--font-body); letter-spacing: 0.2em; color: #fff; }
+  .nametag .avatar { width: 72px; height: 72px; font-size: 28px; margin: 0 auto var(--s-3); }
+  .nametag h1 { text-align: center; font-family: var(--font-hand); font-size: 3rem; font-weight: 600; }
+  .nametag .bio { text-align: center; color: var(--ink-soft); margin-top: var(--s-2); font-size: var(--fs-1); }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); margin-top: var(--s-5); text-align: center; }
+  .stats .n { font-family: var(--font-display); font-size: var(--fs-5); font-weight: 700; display: block; }
+  .stats .l { font-size: 12px; color: var(--pencil); text-transform: uppercase; letter-spacing: 0.08em; }
+  .tallybox { margin-top: var(--s-4); text-align: center; }
+  .tallybox .muted { display: block; }
+  .boards { margin-top: var(--s-4); font-size: var(--fs-1); }
+  .boards a { display: inline-block; margin: 2px 4px 2px 0; }
+  .section h2 { color: var(--paper); text-shadow: 0 1px 0 rgba(0,0,0,0.3); margin-bottom: var(--s-3); }
+  .section + .section { margin-top: var(--s-6); }
+  .notes { display: flex; flex-wrap: wrap; gap: var(--s-5) var(--s-4); padding: var(--s-2) 0 var(--s-4); }
+  .notes .note { width: 210px; }
+  .profile .board { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); padding-top: var(--s-3); }
+  .former { color: var(--pencil); }
+  @media (max-width: 900px) { .profile { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header class="topbar container">
+  <div class="topbar__strip">
+    <span class="pin pin--l pin--blue" aria-hidden="true"></span>
+    <a class="logo" href="#">Skill<span class="logo__swap">Swap</span></a>
+    <span class="hand pencil">Mirpur Neighbours</span>
+    <nav class="nav" aria-label="Main">
+      <a href="#">Boards</a>
+      <a href="#">Inbox <span class="chip" style="background:var(--red-pen);color:#fff">2</span></a>
+      <a href="#" class="row" style="gap:6px"><span class="avatar">E</span> Emtiaz</a>
+    </nav>
+    <span class="pin pin--r pin--green" aria-hidden="true"></span>
+  </div>
+</header>
+<main class="container page">
+  <div class="profile">
+    <aside>
+      <div class="nametag">
+        <span class="avatar">R</span>
+        <h1>Rina S.</h1>
+        <p class="bio">Plays guitar badly with great enthusiasm. Needs a spreadsheet intervention. Block D, near the mosque.</p>
+        <div class="stats"><div><span class="n">4</span><span class="l">swaps done</span></div><div><span class="n">Jun '26</span><span class="l">member since</span></div></div>
+        <div class="tallybox"><span class="tally"><s>||||</s></span><span class="muted">people she's taught</span></div>
+        <div class="boards"><span class="muted">On boards:</span> <a class="chip" href="#">Mirpur Neighbours</a> <a class="chip" href="#">Late-night Devs</a></div>
+      </div>
+      <p class="on-cork muted" style="margin-top:var(--s-4); font-size:13px">Full name, email and contact stay private until a swap is accepted. <a href="#" style="color:#fff">Flag this profile</a></p>
+    </aside>
+
+    <div>
+      <section class="section">
+        <h2>Thank-you notes <span class="hand" style="color:var(--highlighter);font-size:1.3rem">stuck here by people she's helped</span></h2>
+        <div class="notes">
+          <div class="note" style="--rot:-2deg">Two sessions and I can play Wonderwall. My family is not thrilled. Thank you!<span class="note__by">— Emtiaz Z.</span></div>
+          <div class="note note--green" style="--rot:1.5deg">Patient, funny, brought a spare guitar AND spare picks.<span class="note__by">— Joy P.</span></div>
+          <div class="note" style="--rot:0.5deg">Taught my daughter three chords in an afternoon.<span class="note__by">— Kamal H.</span></div>
+          <div class="note note--green" style="--rot:-1deg">Excellent tea. Also guitar.<span class="note__by former">— former member</span></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Rina's notices</h2>
+        <div class="board">
+          <a class="card card--offer" style="--rot:-1deg" href="#"><span class="pin" aria-hidden="true"></span><span class="stamp">Offer · Music</span><span class="card__title">Guitar chords for total beginners</span><span class="card__meta"><span>Either</span></span></a>
+          <a class="card card--offer" style="--rot:1.2deg" href="#"><span class="pin pin--green" aria-hidden="true"></span><span class="stamp">Offer · Music</span><span class="card__title">Ukulele for kids</span><span class="card__meta"><span>In person</span></span></a>
+          <a class="card card--want" style="--rot:0.4deg" href="#"><span class="tape tape--top" aria-hidden="true"></span><span class="stamp stamp--blue">Want · Tech</span><span class="card__title">Excel that doesn't scare me</span><span class="card__meta"><span>Evenings</span></span></a>
+          <a class="card card--want" style="--rot:-1.6deg" href="#"><span class="tape tape--tl" aria-hidden="true"></span><span class="stamp stamp--blue">Want · Cooking</span><span class="card__title">Proper biryani</span><span class="card__meta"><span>Weekends</span></span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+</body>
+</html>

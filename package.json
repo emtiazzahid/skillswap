@@ -1,0 +1,12 @@
+{
+  "name": "skillswap",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "mockups:render": "node scripts/render-mockups.ts"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}

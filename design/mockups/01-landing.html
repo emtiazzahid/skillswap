@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkillSwap — Neighbors trade skills, no money</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:opsz,wght,SOFT@9..144,400..700,0..100&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../board.css">
+<style>
+  .hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: var(--s-7); align-items: center; padding: var(--s-7) 0 var(--s-6); }
+  .hero__poster { position: relative; background: var(--paper); padding: var(--s-6) var(--s-6) var(--s-6); box-shadow: var(--lift-paper), var(--inset-paper); transform: rotate(-1.2deg); }
+  .hero__poster h1 { font-size: clamp(2.4rem, 4.6vw, 3.6rem); font-weight: 700; }
+  .hero__poster h1 em { font-style: italic; font-weight: 500; color: var(--red-pen); }
+  .hero__poster p { font-size: var(--fs-3); color: var(--ink-soft); margin-top: var(--s-4); max-width: 34ch; }
+  .hero__cta { display: flex; gap: var(--s-3); margin-top: var(--s-5); flex-wrap: wrap; align-items: center; }
+  .hero__note { position: absolute; right: -28px; bottom: -26px; --rot: 6deg; width: 170px; font-size: 1.2rem; }
+  .hero__cards { position: relative; height: 520px; }
+  .hero__cards .card { position: absolute; width: 230px; }
+  .how { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5); margin: var(--s-6) 0; }
+  .how .index-card { padding-left: 60px; min-height: 180px; }
+  .how .num { position: absolute; left: 12px; top: 10px; font-family: var(--font-hand); font-size: 2.4rem; color: var(--red-pen); line-height: 1; }
+  .how h3 { margin-bottom: var(--s-2); }
+  .communities { margin: var(--s-6) 0 var(--s-8); }
+  .community-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5); margin-top: var(--s-4); }
+  .community .tag { justify-self: start; }
+  .community { position: relative; background: var(--paper); padding: var(--s-4) var(--s-4) var(--s-4); box-shadow: var(--lift-paper), var(--inset-paper); text-decoration: none; color: var(--ink); display: grid; gap: var(--s-2); transform: rotate(var(--rot)); }
+  .community:hover { transform: rotate(0) translateY(-2px); }
+  .community h3 { font-size: var(--fs-4); }
+  .community .counts { display: flex; gap: var(--s-4); font-size: var(--fs-1); color: var(--pencil); }
+  .community .counts b { color: var(--ink); font-family: var(--font-display); font-size: var(--fs-3); }
+  .section-title { display: flex; align-items: baseline; gap: var(--s-3); color: var(--paper); }
+  .section-title h2 { color: var(--paper); text-shadow: 0 1px 0 rgba(0,0,0,0.3); }
+  .footer { color: rgba(255,255,255,0.85); font-size: var(--fs-1); padding: var(--s-6) 0 var(--s-7); display: flex; gap: var(--s-5); flex-wrap: wrap; }
+  .footer a { color: #fff; }
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: var(--s-6); padding-top: var(--s-6); }
+    .hero__poster { transform: none; }
+    .hero__note { position: static; margin-top: var(--s-5); width: 180px; --rot: -2deg; }
+    .hero__cards { height: auto; display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-5) var(--s-3); padding-top: var(--s-3); }
+    .hero__cards .card { position: static; width: auto; --rot: 0deg !important; }
+    .hero__cards .hero__hint { display: none; }
+    .how, .community-list { grid-template-columns: 1fr; }
+    .section-title { flex-wrap: wrap; }
+  }
+  @media (max-width: 480px) { .hero__cards { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header class="topbar container">
+  <div class="topbar__strip">
+    <span class="pin pin--l pin--blue" aria-hidden="true"></span>
+    <a class="logo" href="#">Skill<span class="logo__swap">Swap</span></a>
+    <span class="hand pencil">a noticeboard for trading what you know</span>
+    <nav class="nav" aria-label="Main">
+      <a href="#">Boards</a>
+      <a href="#">How it works</a>
+      <a href="#">About</a>
+      <a class="btn btn--sm" href="#">Sign in</a>
+    </nav>
+    <span class="pin pin--r pin--green" aria-hidden="true"></span>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div class="hero__poster">
+      <span class="tape tape--tl" aria-hidden="true"></span>
+      <span class="tape tape--tr" aria-hidden="true"></span>
+      <h1>Teach me guitar,<br>I'll teach you <em>Excel.</em></h1>
+      <p>SkillSwap is a community noticeboard where neighbors trade skills. No money, no ratings, no algorithm. Just people who know things and people who want to learn them.</p>
+      <div class="hero__cta">
+        <a class="btn" href="#">Find your board</a>
+        <a class="btn btn--ghost" href="#">Start one for your community</a>
+      </div>
+      <div class="note hero__note">Free, forever.<br>Open source.<span class="note__by">— the rules</span></div>
+    </div>
+
+    <div class="hero__cards" aria-label="Sample notices">
+      <a class="card card--offer" style="--rot:-3deg; left:0; top:0" href="#">
+        <span class="pin" aria-hidden="true"></span>
+        <span class="stamp">Offer · Music</span>
+        <span class="card__title">Guitar chords for total beginners</span>
+        <span class="card__desc">Four chords, twenty songs. Bring any guitar, I have a spare.</span>
+        <span class="card__meta"><span class="card__who"><span class="avatar">R</span>Rina S.</span><span>Online or in person</span></span>
+      </a>
+      <a class="card card--want" style="--rot:2.5deg; right:0; top:60px" href="#">
+        <span class="tape tape--top" aria-hidden="true"></span>
+        <span class="stamp stamp--blue">Want · Tech</span>
+        <span class="card__title">Excel that doesn't scare me</span>
+        <span class="card__desc">Pivot tables. VLOOKUP. Whatever a macro is.</span>
+        <span class="card__meta"><span class="card__who"><span class="avatar">T</span>Tanvir A.</span><span>Evenings</span></span>
+      </a>
+      <a class="card card--offer" style="--rot:1.5deg; left:20px; top:300px" href="#">
+        <span class="pin pin--green" aria-hidden="true"></span>
+        <span class="stamp stamp--green">Offer · Cooking</span>
+        <span class="card__title">Sourdough from scratch</span>
+        <span class="card__desc">Starter included. One Saturday, two loaves.</span>
+        <span class="card__meta"><span class="card__who"><span class="avatar">M</span>Maya K.</span><span>In person</span></span>
+      </a>
+      <a class="card card--want" style="--rot:-1.5deg; right:30px; top:320px" href="#">
+        <span class="tape tape--tl" aria-hidden="true"></span>
+        <span class="stamp stamp--blue">Want · Languages</span>
+        <span class="card__title">Korean for K-drama</span>
+        <span class="card__desc">I can already say "saranghae". Need the rest.</span>
+        <span class="card__meta"><span class="card__who"><span class="avatar">J</span>Joy P.</span><span>Online</span></span>
+      </a>
+      <span class="hand hero__hint" style="position:absolute; left:230px; top:520px; color:#fff; font-size:1.5rem; transform:rotate(-6deg); white-space:nowrap">↖ 3 new matches this week</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title"><h2>How it works</h2><span class="hand" style="color:#ffe95c">it's three index cards, really</span></div>
+    <div class="how">
+      <div class="index-card"><span class="num">1</span><h3>Pin what you know</h3><p>Post an <b>offer</b> for anything you can teach. Post a <b>want</b> for anything you'd like to learn. Guitar, Bangla, tax forms, knots.</p></div>
+      <div class="index-card"><span class="num">2</span><h3>Find a match</h3><p>The board shows who wants what you offer, and who offers what you want. Reciprocal pairs float to the top.</p></div>
+      <div class="index-card"><span class="num">3</span><h3>Swap and say thanks</h3><p>Accept a request, contact details unlock for both of you. Meet in public or online. Leave a one-line thank-you note.</p></div>
+    </div>
+  </section>
+
+  <section class="communities">
+    <div class="section-title"><h2>Boards near and far</h2><a class="btn btn--sm btn--paper" href="#" style="margin-left:auto">+ Start a board</a></div>
+    <div class="community-list">
+      <a class="community" style="--rot:-1deg" href="#"><span class="tag" style="align-self:start">Mirpur, Dhaka</span><h3>Mirpur Neighbours</h3><p class="muted">Block C and D residents, mostly weekend swaps at the community hall.</p><span class="counts"><span><b>84</b> members</span><span><b>37</b> notices</span></span></a>
+      <a class="community" style="--rot:1.2deg" href="#"><span class="tag" style="align-self:start">Online</span><h3>Late-night Devs</h3><p class="muted">Programmers teaching each other what the other stack does.</p><span class="counts"><span><b>212</b> members</span><span><b>91</b> notices</span></span></a>
+      <a class="community" style="--rot:-0.4deg" href="#"><span class="tag" style="align-self:start">BUET campus</span><h3>Titumir Hall</h3><p class="muted">Study partners, instruments, cooking on a hostel stove.</p><span class="counts"><span><b>56</b> members</span><span><b>22</b> notices</span></span></a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>SkillSwap is a non-commercial hobby project.</span>
+    <a href="#">Source on GitHub</a>
+    <a href="#">Rules &amp; safety</a>
+    <a href="#">Self-host your own</a>
+  </footer>
+</main>
+</body>
+</html>

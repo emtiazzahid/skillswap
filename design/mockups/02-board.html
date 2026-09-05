@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:opsz,wght,SOFT@9..144,400..700,0..100&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../board.css">
+<title>Mirpur Neighbours — SkillSwap</title>
+<style>
+  .community-head { display: flex; align-items: flex-end; gap: var(--s-5); flex-wrap: wrap; padding: var(--s-6) 0 var(--s-4); }
+  .community-head .tag { margin-bottom: var(--s-3); }
+  .community-head .actions { margin-left: auto; display: flex; gap: var(--s-3); align-items: center; }
+  .subnav { display: flex; gap: var(--s-2); align-items: center; flex-wrap: wrap; margin-bottom: var(--s-4); }
+  .subnav .seg { background: rgba(0,0,0,0.18); }
+  .subnav .seg > * { color: rgba(255,255,255,0.85); }
+  .subnav .seg > [aria-current="page"] { color: var(--ink); }
+  .toolbar { display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap; margin-bottom: var(--s-2); }
+  .search { flex: 1; min-width: 200px; display: flex; align-items: center; gap: var(--s-2); background: var(--paper); padding: 0.5em 0.8em; box-shadow: var(--lift-paper); border-radius: 2px; }
+  .search input { border: 0; background: transparent; font: inherit; width: 100%; color: var(--ink); }
+  .search input:focus { outline: none; }
+  .count { color: var(--paper); font-family: var(--font-hand); font-size: 1.4rem; }
+  .filters .field { margin-bottom: var(--s-3); }
+  .clear { font-size: 13px; }
+  .pending-banner { display: flex; gap: var(--s-3); align-items: center; background: var(--sticky); padding: var(--s-3) var(--s-4); box-shadow: var(--lift-paper); transform: rotate(0.4deg); margin-bottom: var(--s-4); font-size: var(--fs-1); }
+  .card--pending { background: var(--paper-2); outline: 2px dashed var(--pencil-light); outline-offset: -6px; }
+  .pager { display: flex; justify-content: center; gap: var(--s-3); }
+</style>
+</head>
+<body>
+<header class="topbar container">
+  <div class="topbar__strip">
+    <span class="pin pin--l pin--blue" aria-hidden="true"></span>
+    <a class="logo" href="#">Skill<span class="logo__swap">Swap</span></a>
+    <span class="hand pencil">Mirpur Neighbours</span>
+    <nav class="nav" aria-label="Main">
+      <a href="#" aria-current="page">Boards</a>
+      <a href="#">Inbox <span class="chip" style="background:var(--red-pen);color:#fff">2</span></a>
+      <a href="#" class="row" style="gap:6px"><span class="avatar">E</span> Emtiaz</a>
+    </nav>
+    <span class="pin pin--r pin--green" aria-hidden="true"></span>
+  </div>
+</header>
+
+<main class="container page">
+  <div class="community-head">
+    <div class="banner">
+      <span class="tape tape--tl" aria-hidden="true"></span><span class="tape tape--tr" aria-hidden="true"></span>
+      <h1>Mirpur Neighbours</h1>
+      <p class="muted">Block C and D residents. Weekend swaps at the community hall.</p>
+    </div>
+    <span class="tag">Mirpur, Dhaka</span>
+    <div class="actions">
+      <span class="on-cork muted">84 members · 37 notices</span>
+      <a class="btn" href="#">+ Pin a notice</a>
+    </div>
+  </div>
+
+  <nav class="subnav" aria-label="Community">
+    <div class="seg">
+      <a href="#" aria-current="page">Board</a>
+      <a href="#">Matches <span class="chip" style="background:var(--red-pen);color:#fff;padding:1px 6px">3</span></a>
+      <a href="#">Members</a>
+      <a href="#">Moderation</a>
+    </div>
+  </nav>
+
+  <div class="grid-sidebar">
+    <aside class="clipboard filters" aria-label="Filters">
+      <div class="clipboard__paper">
+        <h3>Show me</h3>
+        <div class="seg" role="tablist" style="width:100%; margin-bottom: var(--s-4)">
+          <button role="tab" aria-selected="true" style="flex:1">Offers</button>
+          <button role="tab" aria-selected="false" style="flex:1">Wants</button>
+        </div>
+        <h3>Category</h3>
+        <div class="checks" style="margin-bottom: var(--s-4)">
+          <label><input type="checkbox" checked> Music</label>
+          <label><input type="checkbox" checked> Languages</label>
+          <label><input type="checkbox" checked> Tech</label>
+          <label><input type="checkbox" checked> Cooking</label>
+          <label><input type="checkbox"> Crafts</label>
+          <label><input type="checkbox"> Fitness</label>
+          <label><input type="checkbox"> Home repair</label>
+          <label><input type="checkbox"> Academic</label>
+          <label><input type="checkbox"> Arts</label>
+          <label><input type="checkbox"> Other</label>
+        </div>
+        <h3>Format</h3>
+        <div class="checks" style="margin-bottom: var(--s-4)">
+          <label><input type="radio" name="f" checked> Any</label>
+          <label><input type="radio" name="f"> In person</label>
+          <label><input type="radio" name="f"> Online</label>
+        </div>
+        <a class="clear" href="#">Clear filters</a>
+      </div>
+    </aside>
+
+    <section>
+      <div class="toolbar">
+        <label class="search"><span aria-hidden="true">⌕</span><input type="search" placeholder="Search notices… try “guitar”" aria-label="Search notices"></label>
+        <span class="count">21 offers pinned</span>
+      </div>
+
+      <div class="pending-banner"><span class="sticker sticker--sm">Pending</span><span>Your first notice, <b>“Laravel for WordPress devs”</b>, is waiting for a moderator. After one approval, your notices go straight up.</span></div>
+
+      <div class="board">
+        <a class="card card--offer card--pending" style="--rot:-1.2deg" href="#">
+          <span class="pin pin--yellow" aria-hidden="true"></span>
+          <span class="stamp">Offer · Tech</span>
+          <span class="card__title">Laravel for WordPress devs</span>
+          <span class="card__desc">You know PHP already. Let me show you routes, Eloquent, and why Blade is nice.</span>
+          <span class="card__meta"><span class="card__who"><span class="avatar">E</span>You</span><span>Online</span></span>
+        </a>
+        <a class="card card--offer" style="--rot:1.4deg" href="#">
+          <span class="pin" aria-hidden="true"></span>
+          <span class="stamp">Offer · Music</span>
+          <span class="card__title">Guitar chords for total beginners</span>
+          <span class="card__desc">Four chords, twenty songs. Bring any guitar, I have a spare.</span>
+          <span class="card__meta"><span class="card__who"><span class="avatar">R</span>Rina S.</span><span>Either</span></span>
+        </a>
+        <a class="card card--offer card--tall" style="--rot:-0.6deg" href="#">
+          <span class="pin pin--green" aria-hidden="true"></span>
+          <span class="stamp stamp--green">Offer · Cooking</span>
+          <span class="card__title">Sourdough from scratch</span>
+          <span class="card__desc">Starter included. One Saturday morning, two loaves, and you go home with a jar of starter and enough confidence to keep it alive. I've been baking for six years and killing starters for eight.</span>
+          <span class="hand" style="font-size:1.2rem">Saturdays only, 9am</span>
+          <span class="card__meta"><span class="card__who"><span class="avatar">M</span>Maya K.</span><span>In person</span></span>
+        </a>
+        <a class="card card--offer" style="--rot:2deg" href="#">
+          <span class="pin pin--blue" aria-hidden="true"></span>
+          <span class="stamp">Offer · Languages</span>
+          <span class="card__title">Conversational Bangla</span>
+          <span class="card__desc">Market Bangla, rickshaw Bangla, tea-stall Bangla. Not the textbook kind.</span>
+          <span class="card__meta"><span class="card__who"><span class="avatar">N</span>Nusrat J.</span><span>In person</span></span>
+        </a>
+        <a class="card card--offer" style="--rot:-1.8deg" href="#">
+          <span class="pin" aria-hidden="true"></span>
+          <span class="stamp">Offer · Home repair</span>
+          <span class="card__title">Fix a leaky tap yourself</span>
+          <span class="card__desc">Washers, seats, and when to give up and call a plumber.</span>
+          <span class="card__meta"><span class="card__who"><span class="avatar">K</span>Kamal H.</span><span>In person</span></span>
+        </a>
+        <a class="card card--offer" style="--rot:0.8deg" href="#">
+          <span class="pin pin--yellow" aria-hidden="true"></span>
+          <span class="stamp">Offer · Arts</span>
+          <span class="card__title">Watercolor without fear</span>
+          <span class="card__desc">Wet-on-wet, cheap paper, no talent required.</span>
+          <span class="card__meta"><span class="card__who"><span class="avatar">S</span>Sadia R.</span><span>Either</span></span>
+        </a>
+        <a class="card card--offer" style="--rot:-0.4deg" href="#">
+          <span class="pin pin--green" aria-hidden="true"></span>
+          <span class="stamp">Offer · Tech</span>
+          <span class="card__title">Excel for people who hate Excel</span>
+          <span class="card__desc">Pivot tables in an hour. VLOOKUP in two. Macros never.</span>
+          <span class="card__meta"><span class="card__who"><span class="avatar">T</span>Tanvir A.</span><span>Online</span></span>
+        </a>
+        <a class="card card--offer" style="--rot:1.6deg" href="#">
+          <span class="pin pin--blue" aria-hidden="true"></span>
+          <span class="stamp">Offer · Fitness</span>
+          <span class="card__title">Run 5k without stopping</span>
+          <span class="card__desc">Eight weeks, three mornings a week, Mirpur stadium track.</span>
+          <span class="card__meta"><span class="card__who"><span class="avatar">F</span>Farhan I.</span><span>In person</span></span>
+        </a>
+        <a class="card card--offer" style="--rot:-1deg" href="#">
+          <span class="pin" aria-hidden="true"></span>
+          <span class="stamp">Offer · Academic</span>
+          <span class="card__title">Chess beyond the opening</span>
+          <span class="card__desc">Middlegame plans, endgames that actually happen, and how to stop blundering pieces.</span>
+          <span class="card__meta"><span class="card__who"><span class="avatar">A</span>Arif M.</span><span>Either</span></span>
+        </a>
+      </div>
+      <div class="pager"><a class="btn btn--paper btn--sm" href="#">Older notices →</a></div>
+    </section>
+  </div>
+</main>
+</body>
+</html>
