@@ -83,6 +83,16 @@ const shot = async (page: Page, name: string, full = false) => {
 
 const browser = await chromium.launch();
 try {
+	// Stills, mobile
+	const m = await browser.newContext({ ...devices['Pixel 7'] });
+	const mp = await m.newPage();
+	await signIn(mp, 'seed-tanvir', 'Tanvir Ahmed');
+	await mp.goto(`${base}/c/mirpur-lane`);
+	await shot(mp, '08-mobile-board');
+	await mp.goto(`${base}/inbox`);
+	await shot(mp, '09-mobile-inbox');
+	await m.close();
+
 	// Stills, desktop
 	const ctx = await browser.newContext({
 		viewport: { width: 1440, height: 900 },
@@ -105,16 +115,6 @@ try {
 	await p.goto(`${base}/c/mirpur-lane/mod`);
 	await shot(p, '07-moderation');
 	await ctx.close();
-
-	// Stills, mobile
-	const m = await browser.newContext({ ...devices['Pixel 7'] });
-	const mp = await m.newPage();
-	await signIn(mp, 'seed-tanvir', 'Tanvir Ahmed');
-	await mp.goto(`${base}/c/mirpur-lane`);
-	await shot(mp, '08-mobile-board');
-	await mp.goto(`${base}/inbox`);
-	await shot(mp, '09-mobile-inbox');
-	await m.close();
 
 	// Walkthrough video, ~20 s
 	const v = await browser.newContext({
