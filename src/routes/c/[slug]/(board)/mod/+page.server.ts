@@ -1,6 +1,7 @@
 import { fail } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import { ctx } from '$lib/server/context';
+import { bumpCommunityVersion } from '$lib/server/services/matching';
 import { loadAccess, requireModerator } from '$lib/server/access';
 import { pendingSkills } from '$lib/server/services/skills';
 import {
@@ -77,6 +78,7 @@ async function mod(
 	requireModerator(access);
 	try {
 		await fn(db, access, await event.request.formData());
+		await bumpCommunityVersion(ctx(event).env.SESSIONS, access.community.id);
 	} catch (e) {
 		if (e instanceof ModerationError || e instanceof CommunityError)
 			return fail(400, { message: e.message });

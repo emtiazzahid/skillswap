@@ -12,5 +12,5 @@
 	});
 </script>
 
-<TopBar user={data.user} />
+<TopBar user={data.user} inbox={data.inbox} />
 {@render children()}

@@ -3,8 +3,9 @@
 	import { page } from '$app/state';
 	let {
 		user,
+		inbox = 0,
 		tagline = 'a noticeboard for trading what you know'
-	}: { user: SessionUser | null; tagline?: string } = $props();
+	}: { user: SessionUser | null; inbox?: number; tagline?: string } = $props();
 	const current = (path: string) => (page.url.pathname === path ? 'page' : undefined);
 </script>
 
@@ -17,7 +18,11 @@
 			<a href="/" aria-current={current('/')}>Boards</a>
 			<a href="/about" aria-current={current('/about')}>About</a>
 			{#if user}
-				<a href="/inbox" aria-current={current('/inbox')}>Inbox</a>
+				<a href="/inbox" aria-current={current('/inbox')}
+					>Inbox{#if inbox}<span class="chip inbox-count" aria-label={`${inbox} waiting`}
+							>{inbox}</span
+						>{/if}</a
+				>
 				<a href="/me" class="row" style="gap:6px"
 					><span class="avatar">{user.displayName.slice(0, 1)}</span> {user.displayName}</a
 				>
@@ -28,3 +33,12 @@
 		<span class="pin pin--r pin--green" aria-hidden="true"></span>
 	</div>
 </header>
+
+<style>
+	.inbox-count {
+		background: var(--red-pen);
+		color: #fff;
+		margin-left: 0.35em;
+		padding: 1px 6px;
+	}
+</style>

@@ -1,6 +1,7 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import { ctx } from '$lib/server/context';
+import { bumpCommunityVersion } from '$lib/server/services/matching';
 import { loadAccess, requireMember } from '$lib/server/access';
 import { CATEGORIES } from '$lib/server/db/categories';
 import {
@@ -73,6 +74,7 @@ export const actions: Actions = {
 				m.trustedAt !== null,
 				input
 			);
+			await bumpCommunityVersion(ctx(event).env.SESSIONS, access.community.id);
 			redirect(303, `/c/${access.community.slug}/s/${skill.id}`);
 		} catch (e) {
 			if (e instanceof SkillError) {
