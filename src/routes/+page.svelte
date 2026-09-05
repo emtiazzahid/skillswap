@@ -11,6 +11,11 @@
 		name="description"
 		content="A community noticeboard where neighbors trade skills. No money, no ratings, no algorithm."
 	/>
+	<meta property="og:title" content="SkillSwap — Neighbors trade skills, no money" />
+	<meta
+		property="og:description"
+		content="Teach me guitar, I'll teach you spreadsheets. A community noticeboard for trading what you know."
+	/>
 </svelte:head>
 
 <main class="container">

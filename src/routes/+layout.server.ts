@@ -20,5 +20,5 @@ export const load: LayoutServerLoad = async (event) => {
 		]);
 		inbox = notes + pending;
 	}
-	return { user, inbox };
+	return { user, inbox, origin: event.platform?.env.PUBLIC_ORIGIN ?? event.url.origin };
 };

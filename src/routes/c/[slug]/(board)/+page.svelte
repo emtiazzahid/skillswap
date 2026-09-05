@@ -17,6 +17,20 @@
 	};
 </script>
 
+<svelte:head>
+	<title>{data.community.name} — SkillSwap</title>
+	<meta
+		name="description"
+		content={data.community.tagline || `Offers and wants on the ${data.community.name} board.`}
+	/>
+	<meta property="og:title" content={`${data.community.name} — SkillSwap`} />
+	<meta
+		property="og:description"
+		content={data.community.tagline ||
+			`${data.counts.notices} notices from ${data.counts.members} neighbours. No money, just skills.`}
+	/>
+</svelte:head>
+
 <div class="grid-sidebar">
 	<aside class="clipboard filters" aria-label="Filters">
 		<form class="clipboard__paper" method="GET" action={base}>

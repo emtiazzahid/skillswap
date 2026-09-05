@@ -155,7 +155,10 @@
 		{:else}
 			<div class="index-card index-card--plain">
 				<h3>Ask {data.owner.name} for a swap</h3>
-				<p class="muted">Swap requests open in the next milestone.</p>
+				<p class="muted">
+					Pick one of your offers to give back, or just ask. Contact details unlock once
+					{data.owner.name} accepts.
+				</p>
 				<a class="btn" style="margin-top: var(--s-3)" href={`${base}/s/${data.skill.id}/request`}
 					>Request swap</a
 				>

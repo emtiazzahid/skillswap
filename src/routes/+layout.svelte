@@ -12,5 +12,14 @@
 	});
 </script>
 
+<svelte:head>
+	<meta property="og:site_name" content="SkillSwap" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="{data.origin}/og.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
+
 <TopBar user={data.user} inbox={data.inbox} />
 {@render children()}

@@ -21,7 +21,9 @@
 		"db:migrate:remote": "wrangler d1 migrations apply skillswap-db --remote",
 		"deploy": "pnpm build && wrangler deploy",
 		"cf-typegen": "wrangler types",
-		"mockups:render": "node scripts/render-mockups.ts"
+		"mockups:render": "node scripts/render-mockups.ts",
+		"assets:render": "node scripts/render-assets.ts",
+		"seed:local": "node scripts/seed.ts"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.13.0",
