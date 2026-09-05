@@ -40,7 +40,6 @@
 			><span class="card__who"><span class="avatar">J</span>Joy P.</span><span>Online</span></span
 		>
 	</div>
-	<span class="hand hero__hint">↖ 3 new matches this week</span>
 </div>
 
 <style>
@@ -51,15 +50,6 @@
 	.hero__cards :global(.card) {
 		position: absolute;
 		width: 230px;
-	}
-	.hero__hint {
-		position: absolute;
-		left: 230px;
-		top: 520px;
-		color: #fff;
-		font-size: 1.5rem;
-		transform: rotate(-6deg);
-		white-space: nowrap;
 	}
 	@media (max-width: 900px) {
 		.hero__cards {
@@ -73,9 +63,6 @@
 			position: static;
 			width: auto;
 			--rot: 0deg !important;
-		}
-		.hero__hint {
-			display: none;
 		}
 	}
 	@media (max-width: 480px) {
