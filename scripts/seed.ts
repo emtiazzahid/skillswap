@@ -3,7 +3,7 @@ import { writeFile, mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { seedStatements } from '../src/lib/server/seed.ts';
+import { seedStatements } from '../src/lib/server/seed';
 
 const remote = process.argv.includes('--remote');
 const dir = await mkdtemp(path.join(tmpdir(), 'skillswap-seed-'));

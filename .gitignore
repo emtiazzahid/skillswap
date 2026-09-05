@@ -10,3 +10,4 @@ build
 dist
 playwright-report
 test-results
+design/social/*.webm

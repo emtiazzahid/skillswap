@@ -23,7 +23,8 @@
 		"cf-typegen": "wrangler types",
 		"mockups:render": "node scripts/render-mockups.ts",
 		"assets:render": "node scripts/render-assets.ts",
-		"seed:local": "node scripts/seed.ts"
+		"seed:local": "tsx scripts/seed.ts",
+		"social:kit": "tsx scripts/social-kit.ts"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.13.0",
