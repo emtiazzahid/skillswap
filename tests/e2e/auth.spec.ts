@@ -65,3 +65,23 @@ test.describe('auth', () => {
 		await expect(page.getByText('state expired')).toBeVisible();
 	});
 });
+
+test('the top bar shows the avatar the provider gave us', async ({ page }) => {
+	const id = `av-${uid()}`;
+	await page.goto(`/auth/login?next=${encodeURIComponent('/')}`);
+	await hydrated(page);
+	await page.getByRole('link', { name: 'Continue with test account' }).click();
+	await hydrated(page);
+	await page.getByLabel('Provider user id').fill(id);
+	await page.getByLabel('Name').fill('Avatar Haver');
+	await page.getByLabel('Avatar URL').fill('https://avatars.githubusercontent.com/u/1?v=4');
+	await page.getByRole('button', { name: 'Sign in' }).click();
+	await hydrated(page);
+	await page.getByLabel('Contact method').selectOption('telegram');
+	await page.getByLabel('Contact detail').fill(`@${id.replace(/[^a-z0-9]/gi, '')}`);
+	await page.getByRole('button', { name: 'Pin my name tag' }).click();
+	await expect(page.locator('.topbar img.avatar')).toHaveAttribute(
+		'src',
+		'https://avatars.githubusercontent.com/u/1?v=4'
+	);
+});

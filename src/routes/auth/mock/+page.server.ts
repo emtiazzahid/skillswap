@@ -26,11 +26,12 @@ export const actions: Actions = {
 		const id = String(form.get('id') ?? '').trim();
 		const name = String(form.get('name') ?? '').trim();
 		if (!id || !name) return fail(400, { message: 'id and name required' });
+		const avatar = String(form.get('avatar') ?? '').trim();
 		const { user } = await upsertUserFromOAuth(db, {
 			provider: 'mock',
 			providerUserId: id,
 			name,
-			avatarUrl: null
+			avatarUrl: avatar.startsWith('https://') ? avatar : null
 		});
 		const session = await createSession(db, env.SESSIONS, user.id);
 		setSessionCookie(

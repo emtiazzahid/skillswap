@@ -29,6 +29,14 @@
 				value="Test User"
 			/>
 		</div>
+		<div class="field">
+			<label class="label" for="avatar">Avatar URL</label><input
+				class="input"
+				id="avatar"
+				name="avatar"
+				placeholder="optional"
+			/>
+		</div>
 		{#if form?.message}<p class="error">{form.message}</p>{/if}
 		<button class="btn" type="submit">Sign in</button>
 	</form>

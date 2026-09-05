@@ -23,8 +23,16 @@
 							>{inbox}</span
 						>{/if}</a
 				>
-				<a href="/me" class="row" style="gap:6px"
-					><span class="avatar">{user.displayName.slice(0, 1)}</span> {user.displayName}</a
+				<a href="/me" class="row" style="gap:6px">
+					{#if user.avatarUrl}<img
+							class="avatar"
+							src={user.avatarUrl}
+							alt=""
+							width="24"
+							height="24"
+							loading="lazy"
+						/>{:else}<span class="avatar">{user.displayName.slice(0, 1)}</span>{/if}
+					{user.displayName}</a
 				>
 			{:else}
 				<a class="btn btn--sm" href="/auth/login">Sign in</a>
@@ -35,6 +43,9 @@
 </header>
 
 <style>
+	img.avatar {
+		object-fit: cover;
+	}
 	.inbox-count {
 		background: var(--red-pen);
 		color: #fff;
